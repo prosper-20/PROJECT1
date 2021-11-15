@@ -1,5 +1,18 @@
 from django.shortcuts import render
 from .models import Post
+from django.views.generic import (
+    ListView,
+    DetailView
+)
+
+class PostListView(ListView):
+    model = Post
+    context_object_name = "posts"
+    template_name = 'users/home-page.html'
+    ordering = ["-date_posted"]
+
+class PostDetailView(DetailView):
+    model = Post
 
 def home(request):
 
