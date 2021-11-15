@@ -42,14 +42,14 @@
                     role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">Hi, {{ user.username.upper }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="">Profile</a>
+                      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                       <a class="dropdown-item" href="">Create Post</a>
-                      <a class="dropdown-item" href="">Logout</a>
+                      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     </div>
                   </li>
                 {% else %}
-                  <a class="nav-item nav-link" href="">Login</a>
-                  <a class="nav-item nav-link" href="">Register</a>
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                 {% endif %}
               </div>
         </div>
