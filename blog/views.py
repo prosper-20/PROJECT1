@@ -10,11 +10,19 @@ from django.views.generic import (
     DeleteView
 )
 
+class ShowAllPosts(ListView):
+    model = Post
+    context_object_name = "posts"
+    template_name = "blog/show_posts.html"
+    ordering = ["-date_posted"]
+    paginate_by = 5
+
 class PostListView(ListView):
     model = Post
     context_object_name = "posts"
     template_name = 'users/home-page.html'
     ordering = ["-date_posted"]
+    
 
 class PostDetailView(DetailView):
     model = Post
