@@ -137,3 +137,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
+
+LOGIN_URL = 'login'
+
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'edwardprosper001@gmail.com'
+EMAIL_HOST_PASSWORD = 'cristianoronaldoisdgr8st'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'edwardprosper001@gmail.com'
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
