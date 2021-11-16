@@ -90,5 +90,11 @@ body {
   #username {
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
+
+
+  #intro {
+    background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+    height: 100vh;
+  }
     
     
