@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -9,6 +9,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from .forms import CommentForm
 
 class ShowAllPosts(ListView):
     model = Post
@@ -101,3 +102,20 @@ def search_posts(request):
         return render(request, "blog/new_search_posts.html", {'searched': searched, 'posts': posts})
     else:
         return render(request, "blog/new_search_posts.html")
+
+
+class PostCommentView(LoginRequiredMixin, CreateView):
+    model = Comment
+    form_class = CommentForm
+    success_url = "/"
+    template_name = "blog/post_comment_form.html"
+
+    def form_valid(self, form):
+        form.instance.name = self.request.user
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+
+    
+    
+    
