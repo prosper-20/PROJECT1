@@ -33,10 +33,13 @@ class Post(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     post_choices = models.CharField(choices=POST_CHOICES, max_length=1)
     image = models.ImageField(default="newpost.jpg", upload_to="default_pics")
-
+    likes = models.ManyToManyField(User, related_name="blog_posts")
 
     def __str__(self):
         return self.title
+
+    def total_likes(self):
+        return self.likes.count()
 
 
     def get_absolute_url(self):

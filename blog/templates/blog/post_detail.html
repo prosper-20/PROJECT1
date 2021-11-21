@@ -131,7 +131,21 @@
               <a style="float: right; margin-left: 0.3cm;" class="btn btn-outline-danger btn-sm" href="">Delete</a>
               <a style="float: right;" class="btn btn-outline-info btn-sm" href="">Update</a>
               {% endif %}
-            <br>
+              <br>
+              <br>
+              <form action="{% url 'like_post' post.pk %}" method="post">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                    {% if liked %}
+                        <button type="submit", name="post_id", value="{{ post.id }}" class="btn btn-secondary btn-sm">Unlike</button>
+                    {% else %}
+                        <button type="submit", name="post_id", value="{{ post.id }}" class="btn btn-primary btn-sm">Like</button> 
+                    {% endif %}-
+                {% endif %}
+                
+                {{ total_likes }} Likes
+            </form>
+              <br>
             <!-- <br>
             <form action="" method="post">
               {% csrf_token %}
@@ -225,6 +239,7 @@
             {% endif %}
           </section>
           <!--Section: Comments-->
+         
 
           
 
