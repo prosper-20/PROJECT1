@@ -120,7 +120,7 @@ def home(request):
     return render(request, "users/home-page.html", context)
 
 def about(request):
-    return render(request, "blog/about.html")
+    return render(request, "blog/new_about.html")
 
 
 def search_posts(request):
@@ -146,5 +146,41 @@ class PostCommentView(LoginRequiredMixin, CreateView):
 
 
     
-    
-    
+def PoliticsView(request):
+    posts = Post.objects.filter(category="P").all().order_by("-id")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/politics_view.html", context)
+
+
+def EntertainmentView(request):
+    posts = Post.objects.filter(category="E").all().order_by("-id")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/entertainment_view.html", context)
+
+def TrendingView(request):
+    posts = Post.objects.filter(category="T").all().order_by("-id")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/trending_view.html", context)
+
+
+def MusicView(request):
+    posts = Post.objects.filter(category="M").all().order_by("-id")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/music_view.html", context)
+
+
+def SportsView(request):
+    posts = Post.objects.filter(category="S").all().order_by("-id")
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/sports_view.html", context)
+

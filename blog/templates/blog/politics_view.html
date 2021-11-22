@@ -65,11 +65,6 @@
     }
 
   </style>
-  <!-- NEW HEAD TAGS FOR THE FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/PROJECT/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -95,12 +90,12 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{% url 'home' %}">Home
+            <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_blank">About</a>
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
@@ -325,16 +320,17 @@
 
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">All
-                <span class="sr-only">(current)</span>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">All
+                
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'trending_view' %}">Trending</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="{% url 'politics_view' %}">Politics</a>
+              <span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'entertainment_view' %}">Entertainment</a>
@@ -373,7 +369,7 @@
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          {% for post in posts%}
+          {% for post in posts %}
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
@@ -404,7 +400,7 @@
                         <!-- NIN-SIM linkage: Subscribers want two-month extension as deadline nears -->
                         <a class="black-text" href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
                       </p>
-                      <a target="_top" href="{% url 'post_detail' post.id %}" class="btn btn-outline-info btn-sm">Read</a>
+                      <a target="_blank" href="#" class="btn btn-outline-info btn-sm">Read</a>
                     </a>
                   </strong>
                 </h5>
@@ -821,7 +817,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2021 Copyright:
-    <a class="text-white" href="{% url 'home' %}">HIS BLOG</a>
+    <a class="text-white" href="https://mdbootstrap.com/">HIS BLOG</a>
   </div>
   <!-- Copyright -->
 </footer>

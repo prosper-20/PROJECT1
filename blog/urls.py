@@ -9,7 +9,12 @@ from .views import (
     UserPostListView,
     ShowAllPosts,
     PostCommentView,
-    LikeView
+    LikeView,
+    PoliticsView,
+    TrendingView,
+    EntertainmentView,
+    MusicView,
+    SportsView,
 )
 
 urlpatterns = [
@@ -23,6 +28,12 @@ urlpatterns = [
     path("posts/all/", ShowAllPosts.as_view(), name="all_posts"),
     path('post/<int:pk>/comment/', PostCommentView.as_view(), name="post_comments"),
     path("post/like/<int:pk>/",LikeView, name="like_post"),
+    path("post/politics/", views.PoliticsView, name="politics_view"),
+    path("post/entertainment/", views.EntertainmentView, name="entertainment_view"),
+    path("post/trending/", views.TrendingView, name="trending_view"),
+    path("post/music/", views.MusicView, name="music_view"),
+    path("post/sports/", views.SportsView, name="sports_view"),
+
 
     
 ]

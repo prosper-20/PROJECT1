@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>HIS BLOG</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'users/css1/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'users/css1/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'users/css1/style.min.css' %}" rel="stylesheet">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    .divider{
+    background-color: rosybrown;
+    background-size: cover;
+    }
+
+    #book {
+      background-image: url(https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHdyaXRlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+      height: 300px;
+      background-size: cover;
+      margin-top: 0px;
+      color: black;
+    }
+
+    #join {
+      background-image: url(https://thumbs.dreamstime.com/b/blog-information-website-concept-workplace-background-text-view-above-127465079.jpg);
+      height: 400px;
+      background-size: cover;
+      margin-top: 0px;
+      color: black;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+        <strong class="blue-text">HIS BLOG</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'home' %}">Home
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_top">About
+                <span class="sr-only">(current)</span>
+            </a>  
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+              target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
+              tutorials</a>
+          </li> -->
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <!-- <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> 1 </span>
+              <i class="fas fa-bell"></i>
+              <span class="clearfix d-none d-sm-inline-block"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </li> -->
+          <!-- THIS IS THR NEW R.H.S NAVBAR THAT YOU COPIED -->
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Hi, {{ user.username.upper }}</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+          {% endif %}
+          <!-- THIS IS THE END OF THE R.HS.S -->
+        </ul>
+
+    </div>
+
+  </div>
+</nav>
+<!-- Navbar -->
+ <!--Main layout-->
+ <div id="intro" class="p-5 text-center bg-light">
+  <h1 class="mt-5 h4" style="font-family: Georgia, 'Times New Roman', Times, serif;">About His Blog</h1>
+</div>
+ <main class="mt-4 mb-5">
+  <div class="container">
+    <!-- THIS IS WHAT YOU COPIED JUST NOW -->
+    <!--Section: Content-->
+    <section>
+      <div class="row">
+        <div class="col-md-6 gx-5 mb-4">
+          <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+            <img src="https://media.istockphoto.com/photos/portrait-of-a-pride-businesswoman-standing-with-arms-crossed-in-the-picture-id1264706497?b=1&k=20&m=1264706497&s=170667a&w=0&h=orUmYRJ6iMg-Joolo5tyV31_yHaKLoMjrR4zbTOzQek=" class="img-fluid" height="400px" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 gx-5 mb-4">
+          <h4><strong>About the Founder</strong></h4>
+          <p class="text-muted">
+            Welcome to HIS BLOG, your number one source for all things [product]. 
+            We're dedicated to giving you the very best of [product], with a focus on [store characteristic 1],
+            [store characteristic 2], [store characteristic 3].
+            Founded in [year] by [founder name], HIS BLOG has come a long way from its beginnings in [starting location]. When [founder name] first started out, [his/her/their] passion for [brand message - e.g. "eco-friendly cleaning products"] drove them to [action: quit day job, do tons of research, etc.] so that HIS BLOG can offer you [competitive differentiator - e.g. "the world's most advanced toothbrush"]. We now serve customers all over [place - town, country, the world], and are thrilled that we're able to turn our passion into [my/our] own website.
+            [I/we] hope you enjoy [my/our] products as much as [I/we] enjoy offering them to you.
+            Sincerely,
+            [founder name]
+          </p>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+    <!-- end of what you copied -->
+      
+    <hr class="my-5" />
+
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>MEET THE TEAM</strong></h4>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img
+                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
+                class="img-fluid"
+              />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+              </p>
+              <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img
+                src="https://mdbootstrap.com/img/new/standard/nature/023.jpg"
+                class="img-fluid"
+              />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+              </p>
+              <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img
+                src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
+                class="img-fluid"
+              />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the
+                card's content.
+              </p>
+              <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+
+    <hr class="my-5" />
+  </div>
+  </main>
+
+
+  <footer></footer>
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-white">
+   <!-- Grid container -->
+   <div class="container p-4">
+     <!-- Section: Social media -->
+     <section class="mb-4">
+       <!-- Facebook -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-facebook-f"></i
+       ></a>
+ 
+       <!-- Twitter -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-twitter"></i
+       ></a>
+ 
+       <!-- Google -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-google"></i
+       ></a>
+ 
+       <!-- Instagram -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-instagram"></i
+       ></a>
+ 
+       <!-- Linkedin -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-linkedin-in"></i
+       ></a>
+ 
+       <!-- Github -->
+       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+         ><i class="fab fa-github"></i
+       ></a>
+     </section>
+     <!-- Section: Social media -->
+ 
+    
+   </div>
+   <!-- Grid container -->
+ 
+   <!-- Copyright -->
+   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+     © 2021 Copyright:
+     <a class="text-white" href="https://mdbootstrap.com/">Eddie's Suite</a>
+   </div>
+   <!-- Copyright -->
+ </footer>
+ <!-- Footer -->
+     </footer>
+
