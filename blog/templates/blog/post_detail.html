@@ -1,4 +1,5 @@
 {% load static %}
+{% load social_share %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +97,17 @@
               <img src="{{ object.image.url }}"
               class="img-fluid shadow-2-strong rounded mb-4" style="display: inline-block;" alt="" />
 
+              <p>{% post_to_whatsapp object_or_url %}</p>
+              {% social_widget_render "facebook/likebox.html" href="https://www.facebook.com/FacebookDevelopers" %}
+              <!-- <a href="{% post_to_twitter object.title %}" title="Twitter"><i class="fa fa-twitter"></i></a> -->
+             
+              {% post_to_whatsapp object_or_url "<p style='color: green;'><i class='fa fa-whatsapp'></i></p>" %}
+              <!-- <p>{% post_to_gplus object_or_url "Post to Google+!" %}</p> -->
+
+              <button type="button" class="btn btn-primary px-3 me-1" style="background-color: green;">
+                <i class="fab fa-whatsapp"><p>{% post_to_whatsapp object_or_url %}</p></i>
+              </button>
+
 
             <div class="row align-items-center mb-4">
               <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
@@ -112,11 +124,14 @@
                 <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #55acee;">
                   <i class="fab fa-twitter"></i>
                 </button>
-                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #0082ca;">
-                  <i class="fab fa-linkedin"></i>
+                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: green;">
+                  <i class="fab fa-whatsapp"></i>
                 </button>
                 <button type="button" class="btn btn-primary px-3 me-1">
                   <i class="fas fa-comments"></i>
+                </button>
+                <a href="{% post_to_whatsapp object_or_url %}" class="btn btn-primary px-3 me-1">
+                  <i class="fas fa-whatsapp-square"></i>
                 </button>
               </div>
             </div>

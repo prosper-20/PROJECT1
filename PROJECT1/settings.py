@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'storages',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
