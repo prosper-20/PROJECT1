@@ -96,46 +96,36 @@
           <section class="border-bottom mb-4">
               <img src="{{ object.image.url }}"
               class="img-fluid shadow-2-strong rounded mb-4" style="display: inline-block;" alt="" />
-
-              <p>{% post_to_whatsapp object_or_url %}</p>
-              {% social_widget_render "facebook/likebox.html" href="https://www.facebook.com/FacebookDevelopers" %}
+              
               <!-- <a href="{% post_to_twitter object.title %}" title="Twitter"><i class="fa fa-twitter"></i></a> -->
-             
-              {% post_to_whatsapp object_or_url "<p style='color: green;'><i class='fa fa-whatsapp'></i></p>" %}
+              <!-- {% post_to_whatsapp object_or_url "<p style='color: green;'><i class='fa fa-whatsapp'></i></p>" %} -->
               <!-- <p>{% post_to_gplus object_or_url "Post to Google+!" %}</p> -->
 
-              <button type="button" class="btn btn-primary px-3 me-1" style="background-color: green;">
-                <i class="fab fa-whatsapp"><p>{% post_to_whatsapp object_or_url %}</p></i>
-              </button>
-
-
             <div class="row align-items-center mb-4">
-              <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
+              <!-- <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
                   <img src="{{ object.author.profile.image.url }}" class="rounded shadow-1-strong me-2"
                   height="35" alt="" loading="lazy" />
                 <span> Published <u>{{ object.date_posted|date:"F d, Y" }}</u> by</span>
                 <a href="" class="text-dark"><strong>{{ object.author|safe }}</strong></a>
-              </div>
+              </div> -->
 
-              <div class="col-lg-6 text-center text-lg-end">
+              <!-- <div class="col-lg-6 text-center text-lg-end">
                 <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #3b5998;">
                   <i class="fab fa-facebook-f"></i>
                 </button>
                 <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #55acee;">
                   <i class="fab fa-twitter"></i>
-                </button>
-                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: green;">
+                </button> -->
+                <!-- <button type="button" class="btn btn-primary px-3 me-1" style="background-color: green;">
                   <i class="fab fa-whatsapp"></i>
-                </button>
-                <button type="button" class="btn btn-primary px-3 me-1">
+                </button> -->
+                <!-- <button type="button" class="btn btn-primary px-3 me-1">
                   <i class="fas fa-comments"></i>
-                </button>
-                <a href="{% post_to_whatsapp object_or_url %}" class="btn btn-primary px-3 me-1">
-                  <i class="fas fa-whatsapp-square"></i>
-                </button>
+                </button> -->
               </div>
-            </div>
+            <!-- </div> -->
           </section>
+          
           <!--Section: Post data-mdb-->
 
           <!--Section: Text-->
@@ -184,18 +174,10 @@
           <section class="text-center border-top border-bottom py-4 mb-4">
             <p><strong>Share with your friends:</strong></p>
 
-            <button type="button" class="btn btn-primary me-1" style="background-color: #3b5998;">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-            <button type="button" class="btn btn-primary me-1" style="background-color: #55acee;">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary me-1" style="background-color: #0082ca;">
-              <i class="fab fa-linkedin"></i>
-            </button>
-            <a href="{% url 'post_comments' post.pk %}" class="btn btn-primary me-1">
-              <i class="fas fa-comments me-2"></i>Add comment
-            </a>
+            <p>{% post_to_whatsapp object_or_url %}</p>
+            <p>{% post_to_facebook object_or_url %}</p>
+            <p>{% post_to_twitter object_or_url %}</p>
+
           </section>
           <!--Section: Share buttons-->
 
@@ -250,14 +232,12 @@
               </div>
             </div>
             {% endfor %}
-            <p><a href="{% url 'post_comments' post.pk %}">Add One</a></p>
+            <a href="{% url 'post_comments' post.pk %}" class="btn btn-primary me-1">
+              <i class="fas fa-comments me-2"></i>Add comment
+            </a>
             {% endif %}
           </section>
           <!--Section: Comments-->
-         
-
-          
-
             
         </div>
         <!--Grid column-->
