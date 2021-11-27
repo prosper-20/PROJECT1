@@ -1,8 +1,16 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+# EMAIL IMPORTS
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage, send_mail
+from django.conf import settings
+from blog.models import Post
+from sendgrid.helpers.mail import SandBoxMode, MailSettings
 
 
 def register(request):
@@ -16,6 +24,47 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, "users/main_register.html", {"form": form})
+
+
+def register1(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if User.objects.filter(username=username).exists():
+            messages.info(request, 'Huff ,Username already exist')
+            return redirect("register")
+        elif User.objects.filter(email=email).exists():
+            messages.info(request, 'Come On, Email was already Taken !')
+            return redirect("register")
+        else:
+            user = User.objects.create_user(
+                username=username, password=password, email=email)
+            mydict = {'username': username}
+            user.save()
+            mail_settings = MailSettings()
+            mail_settings.sandbox_mode = SandBoxMode(False)
+            html_template = 'blog/index.html'
+            html_message = render_to_string(html_template, context=mydict)
+            subject = 'Welcome!!!'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            # YOU CHANGED IT FROM EmailMessage to send_mail
+            message = EmailMessage(subject, html_message,
+                                   email_from, recipient_list)
+            message.content_subtype = 'html'
+            message.mail = mail_settings
+            new_mail = message.send()
+            # print(new_mail)
+            messages.success(request, f'Account created for {username}! You can sign in below')
+            return redirect("login")
+
+    else:
+        # return render(request, 'users/register2.html')
+        return render(request, 'users/index.html')
+        # U were using register2.html
+
 
 
 @login_required
