@@ -47,7 +47,7 @@ class PostDetailView(DetailView):
     model = Post
 
     def get_context_data(self, *args, **kwargs):
-        context = super(PostDetailView, self).get_context_data()
+        context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()
         liked = False
