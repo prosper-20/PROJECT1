@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 
 CATEGORY_CHOICES = (
@@ -27,7 +28,7 @@ POST_CHOICES = (
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField(help_text="Be Expressive")
+    content = RichTextField(blank=True, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
