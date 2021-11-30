@@ -35,7 +35,6 @@ class Post(models.Model):
     post_choices = models.CharField(choices=POST_CHOICES, max_length=1)
     image = models.ImageField(default="newpost.jpg", upload_to="default_pics")
     likes = models.ManyToManyField(User, related_name="blog_posts")
-    slug = models.SlugField(blank=True, default="")
 
 
     def __str__(self):
@@ -44,14 +43,10 @@ class Post(models.Model):
     def total_likes(self):
         return self.likes.count()
 
-    def save(self, *args, **kwargs): # < here
-        self.slug = slugify(self.title)
-        super(Post, self).save()
-
 
     def get_absolute_url(self):
-        return reverse("post_detail", kwargs={"slug": self.slug} )
-        # kwargs={"pk": self.pk}
+        return reverse("post_detail",  kwargs={"pk": self.pk})
+        
 
 
 
