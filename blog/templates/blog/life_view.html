@@ -1,0 +1,845 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>HIS BLOG</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'users/css1/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'users/css1/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'users/css1/style.min.css' %}" rel="stylesheet">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    .divider{
+    background-color: rosybrown;
+    background-size: cover;
+    }
+
+    #book {
+      background-image: url(https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHdyaXRlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+      height: 300px;
+      background-size: cover;
+      margin-top: 0px;
+      color: black;
+    }
+
+    #join {
+      background-image: url(https://thumbs.dreamstime.com/b/blog-information-website-concept-workplace-background-text-view-above-127465079.jpg);
+      height: 400px;
+      background-size: cover;
+      margin-top: 0px;
+      color: black;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+        <strong class="blue-text">HIS BLOG</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="{% url 'home' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_blank">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+              target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
+              tutorials</a>
+          </li> -->
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <!-- <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> 1 </span>
+              <i class="fas fa-bell"></i>
+              <span class="clearfix d-none d-sm-inline-block"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </li> -->
+          <!-- THIS IS THR NEW R.H.S NAVBAR THAT YOU COPIED -->
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Hi, {{ user.username.upper }}</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+          {% endif %}
+          <!-- THIS IS THE END OF THE R.HS.S -->
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmxvZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Breaking: Declaring bandits as terrorists'll come at a price —Gumi
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">BECOME A MEMBER
+                <i class="fas fa-handshake ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJsb2clMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Did you know? <br>
+                  A shrimp's heart is in its head.
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">EXPLORE
+                <i class="fas fa-hat-cowboy-side ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://media.istockphoto.com/photos/the-time-to-get-growing-is-now-picture-id1292991882?b=1&k=20&m=1292991882&s=170667a&w=0&h=5m-6ALajoDouoyaFWwbXrGUyRzeqS97_5Gmaww2YuJc='); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>HIS BLOG is an informative site, designed to deliver first hand content to the general public.
+                  <br>
+                  We do not stand as your day-to-day blogs cause we represent more than that.
+                  We take those steps media houses are unwilling to take.
+                  <br>
+                   His blog has been certified as a media company in just three months. That Speaks volumes of who we are.
+  
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">WRITE AN ARTICLE
+                <i class="fas fa-pen-fancy ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">All
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'trending_view' %}">Trending</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'life_view' %}">Life</a>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'entertainment_view' %}">Entertainment</a>
+            </li>
+
+          </ul>
+          <!-- Links -->
+          <!-- THIS IS THE ORIGINAL FORM -->
+          <!-- <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <i class="fa fa-search fa-1x"></i>
+            </div>
+          </form> -->
+          <!-- THIS IS THE END OF THE ORIGINAL FORM -->
+
+          <form action="{% url 'search_posts' %}" class="form-inline" method="post">
+            {% csrf_token %}
+            <div class="md-form my-0">
+              <input type="search" name="searched" class="form-control me-2"
+                  placeholder="Search posts" aria-label="Search">
+                  <button class="btn btn-outline-info btn-md" type="submit"><i class="fas fa-search" style="color: antiquewhite;"></i></button>
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        
+        <div class="row wow fadeIn">
+
+          <!--Grid column-->
+          {% for post in posts %}
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <!-- <img src="https://mdbootstrap.com/img/new/standard/city/044.jpg" class="card-img-top"> -->
+                <img src="{{ post.image.url }}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="black-text">
+                  <h5>{{ post.get_category_display }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="" class="black-text">
+                      <span class="badge badge-pill {{ post.get_label_display }}-color">{{ post.get_post_choices_display }}</span>
+                      <p>
+                        <!-- NIN-SIM linkage: Subscribers want two-month extension as deadline nears -->
+                        <a class="black-text" href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                      </p>
+                      <a target="_blank" href="#" class="btn btn-outline-info btn-sm">Read</a>
+                    </a>
+                  </strong>
+                </h5>
+
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Grid column-->
+          {% endfor %}
+
+          <!-- YOU JUST ADDED THESE FOR THE PAGINATION -->
+          {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-success mt-3 btn-sm" href="?page=1">First</a>
+                <a class="btn btn-outline-success mt-3 btn-sm" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-success mt-3 btn-sm" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                <a class="btn btn-outline-success mt-3 btn-sm" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-success mt-3 btn-sm" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-success mt-3 btn-sm" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+          {% endif %}
+
+          <!-- END OF PAGONATION STUFF -->
+          
+
+        </div>
+        <!--Grid row-->
+
+      </div>
+        
+      </section>
+      <!--Section: Products v.3-->
+
+      <!-- THIS IS WHERE YOU STARTED PASTING FROM THE HOTEL PROJECT -->
+      <div class="container-fluid px-0">
+        <section class="divider py-5 m-0">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-4 text-right pr-5">
+              <h2>Discover Our Packages</h2>
+            </div>
+            <div class="col-md-4">
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Totam pariatur, officiis maiores nemo id illum? Corrupti dicta,
+                voluptas expedita quae
+                laboriosam, cumque quisquam reiciendis dolore, eius aut fugiat? Vel, quae!
+              </p>
+            </div>
+          </div>
+        </section>
+
+      <section id="book">
+        <!-- Background image -->
+      <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
+        >WRITE FOR US</a
+        >
+      </div>
+      </div>
+      </section>
+      <h3 style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic; font-weight: bold;" 
+      class="d-flex justify-content-center mt-4">Our Top Writers</h3>
+    <div class="container col-md-10 offset-1">
+      <div class="row row-cols-3 row-cols-md-3 g-4">
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <img
+              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              class="card-img-top"
+              style="background-size: 60px;"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <img
+              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              class="card-img-top"
+              style="background-size: 60px;"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a short card.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural lead-in to
+                additional content.
+              </p>
+            </div>
+            
+          </div>
+          
+        </div>
+    </div>
+    </div>
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        
+        <div class="view" style="background-image: url('https://media.istockphoto.com/photos/close-up-headshot-portrait-of-happy-businesswoman-hands-crossed-picture-id1257948554?b=1&k=20&m=1257948554&s=170667a&w=0&h=mHONJkyPis9n93YCVCgb9E6AjbOl2YeD00Xo0N9X03w='); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>We are open to the new memebers
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">JOIN US
+                <i class="fas fa-handshake ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://media.istockphoto.com/photos/the-word-donate-on-wooden-blocks-with-heart-icon-against-blue-and-picture-id1271755758?b=1&k=20&m=1271755758&s=170667a&w=0&h=ymh_AtlshzX6A3-f4EY8Bif-8ToKiNxkPY9TzQ06irE='); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Did you know? <br>
+                  Upon Creation, His blog set out on a mission to help bring change, <br>
+                  Donate Today
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">MAKE A DONATION
+                <i class="fas fa-money-bill ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://media.istockphoto.com/photos/happy-multiethnic-family-mom-dad-and-child-laughing-playing-and-on-picture-id1282222916?b=1&k=20&m=1282222916&s=170667a&w=0&h=bRdap7obX6sxxo4j3UalSrwtt4oLk5H4U8ppYmyBoQo='); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">HIS BLOG</strong>
+              </h1>
+
+              <p>
+                <strong>Your home of trendy news</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Learn clever tips, techniques, or shortcuts that make little tasks easier.
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">LIFE HACKS
+                <i class="fas fa-smile-wink ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  </main>
+  <!--Main layout-->
+
+<footer></footer>
+ <!-- Footer -->
+ <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example21" class="form-control" />
+              <label class="form-label" for="form5Example21">Email address</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+        eum harum corrupti dicta, aliquam sequi voluptate quas.
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <h5 class="text-uppercase mb-2">Locations</h5>
+            <p>
+              10, Obe Street <br>
+              Off Ajao Road, <br>
+              Ikeja, <br>
+              Lagos.
+            </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <p class="mt-3">
+            416 NE, Shenana St <br>
+            New York, NY 10027 <br>
+            (234) 903-6356792
+          </p>
+          <P>59 North Shadow Brook St. <br>
+          Bronx, NY 10457 <br>
+        
+          (234) 903-6356792</P>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-5">Working Hours</h5>
+          <div class="row">
+            <div class="col-6">
+              <p>Monday-Friday</p>
+              <p>Saturday</p>
+              <p>Sunday</p>
+            </div>
+            <div class="col-6">
+              <p>9:00 AM - 5:00 PM</p>
+              <p>12:00 AM - 11:00PM</p>
+              <p>10:00PM</p>
+            </div>
+          </div>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">HIS BLOG</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+    </footer>
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'users/js1/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'users/js1/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'users/js1/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'users/js1/mdb.min.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>
