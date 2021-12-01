@@ -13,8 +13,10 @@ from .views import (
     PoliticsView,
     TrendingView,
     EntertainmentView,
-    MusicView,
     SportsView,
+    CrimeView,
+    LifeView,
+    EducationView,
 )
 
 urlpatterns = [
@@ -30,8 +32,11 @@ urlpatterns = [
     path("post/like/<int:pk>/",LikeView, name="like_post"),
     path("post/politics/", views.PoliticsView, name="politics_view"),
     path("post/entertainment/", views.EntertainmentView, name="entertainment_view"),
+    path("post/crime/", views.CrimeView, name="crime_view"),
+    path("post/education/", views.EducationView, name="education_view"),
+    path("post/life/", views.LifeView, name="life_view"),
     path("post/trending/", views.TrendingView, name="trending_view"),
-    path("post/music/", views.MusicView, name="music_view"),
+    # path("post/music/", views.MusicView, name="music_view"),
     path("post/sports/", views.SportsView, name="sports_view"),
 
 
