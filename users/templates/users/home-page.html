@@ -100,7 +100,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_blank">About</a>
+            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_top">About</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
@@ -322,6 +322,7 @@
 
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="basicExampleNav">
+          <div class="nav"></div>
 
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
@@ -329,6 +330,16 @@
               <a class="nav-link" href="#">All
                 <span class="sr-only">(current)</span>
               </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">More</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'life_view' %}">Life</a>
+                <a class="dropdown-item" href="{% url 'sports_view' %}">Sports</a>
+                <a class="dropdown-item" href="{% url 'crime_view' %}">Crime</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'trending_view' %}">Trending</a>
@@ -394,7 +405,8 @@
               <div class="card-body text-center">
                 <!--Category & Title-->
                 <a href="" class="black-text">
-                  <h5>{{ post.get_category_display }}</h5>
+                  <!-- <h5>{{ post.get_category_display }}</h5> -->
+                  <h5>{{ post.category }}</h5>
                 </a>
                 <h5>
                   <strong>
@@ -484,7 +496,7 @@
         <div class="col-lg-4">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://www.worldwomanfoundation.com/wp-content/uploads/2018/09/Jeannette_Ceja-_Head_Shot_2018_0.jpg"
               class="card-img-top"
               style="background-size: 60px;"
               alt="..."
@@ -502,7 +514,7 @@
         <div class="col-lg-4">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://img.freepik.com/free-photo/cheerful-middle-aged-woman-with-curly-hair_1262-20859.jpg?size=626&ext=jpg"
               class="card-img-top"
               style="background-size: 60px;"
               alt="..."
@@ -516,7 +528,7 @@
         <div class="col">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg?size=626&ext=jpg"
               class="card-img-top"
               alt="..."
             />
