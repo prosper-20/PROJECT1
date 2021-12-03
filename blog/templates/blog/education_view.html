@@ -65,6 +65,11 @@
     }
 
   </style>
+  <!-- NEW HEAD TAGS FOR THE FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/PROJECT/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -95,7 +100,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_blank">About</a>
+            <a class="nav-link waves-effect" href="{% url 'about' %}" target="_top">About</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
@@ -317,20 +322,31 @@
 
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="basicExampleNav">
+          <div class="nav"></div>
 
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">All
-                
+            <li class="nav-item active">
+              <a class="nav-link" href="#">All
+                <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'trending_view' %}">Trending</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">More</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'life_view' %}">Life</a>
+                <a class="dropdown-item" href="{% url 'sports_view' %}">Sports</a>
+                <a class="dropdown-item" href="{% url 'crime_view' %}">Crime</a>
+                <a class="dropdown-item" href="{% url 'trending_view' %}">Trending</a>
+              </div>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'education_view' %}">Eduation</a>
-              <span class="sr-only">(current)</span>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'education_view' %}">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'politics_view' %}">Politics</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'entertainment_view' %}">Entertainment</a>
@@ -369,7 +385,7 @@
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          {% for post in posts %}
+          {% for post in posts%}
           <div class="col-lg-3 col-md-6 mb-4">
 
             <!--Card-->
@@ -390,7 +406,8 @@
               <div class="card-body text-center">
                 <!--Category & Title-->
                 <a href="" class="black-text">
-                  <h5>{{ post.get_category_display }}</h5>
+                  <!-- <h5>{{ post.get_category_display }}</h5> -->
+                  <h5>{{ post.category }}</h5>
                 </a>
                 <h5>
                   <strong>
@@ -400,7 +417,7 @@
                         <!-- NIN-SIM linkage: Subscribers want two-month extension as deadline nears -->
                         <a class="black-text" href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
                       </p>
-                      <a target="_blank" href="#" class="btn btn-outline-info btn-sm">Read</a>
+                      <a target="_top" href="{% url 'post_detail' post.id %}" class="btn btn-outline-info btn-sm">Read</a>
                     </a>
                   </strong>
                 </h5>
@@ -480,7 +497,7 @@
         <div class="col-lg-4">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://www.worldwomanfoundation.com/wp-content/uploads/2018/09/Jeannette_Ceja-_Head_Shot_2018_0.jpg"
               class="card-img-top"
               style="background-size: 60px;"
               alt="..."
@@ -498,7 +515,7 @@
         <div class="col-lg-4">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://img.freepik.com/free-photo/cheerful-middle-aged-woman-with-curly-hair_1262-20859.jpg?size=626&ext=jpg"
               class="card-img-top"
               style="background-size: 60px;"
               alt="..."
@@ -512,7 +529,7 @@
         <div class="col">
           <div class="card h-100">
             <img
-              src="https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JRYBWKGYUMI6XDEHVVXSPEMMPA.jpg"
+              src="https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg?size=626&ext=jpg"
               class="card-img-top"
               alt="..."
             />
@@ -566,7 +583,7 @@
                   </strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">JOIN US
+              <a target="_blank" href="{% url 'register' %}" class="btn btn-outline-white btn-lg">JOIN US
                 <i class="fas fa-handshake ml-2"></i>
               </a>
             </div>
@@ -602,7 +619,7 @@
                   </strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">MAKE A DONATION
+              <a target="_blank" href="https://support.savethechildren.org/site/Donation2?df_id=1620&1620.donation=form1" class="btn btn-outline-white btn-lg">MAKE A DONATION
                 <i class="fas fa-money-bill ml-2"></i>
               </a>
             </div>
@@ -637,7 +654,7 @@
                   </strong>
               </p>
 
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">LIFE HACKS
+              <a target="_blank" href="https://www.lifehack.org/articles/lifestyle/100-life-hacks-that-make-life-easier.html" class="btn btn-outline-white btn-lg">LIFE HACKS
                 <i class="fas fa-smile-wink ml-2"></i>
               </a>
             </div>
@@ -702,10 +719,6 @@
         ><i class="fab fa-linkedin-in"></i
       ></a>
 
-      <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
     </section>
     <!-- Section: Social media -->
 
@@ -817,7 +830,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2021 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">HIS BLOG</a>
+    <a class="text-white" href="{% url 'home' %}">HIS BLOG</a>
   </div>
   <!-- Copyright -->
 </footer>
