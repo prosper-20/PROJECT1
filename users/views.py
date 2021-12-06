@@ -16,11 +16,28 @@ from sendgrid.helpers.mail import SandBoxMode, MailSettings
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
+        email = request.POST['email']
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
-            messages.success(request, f"Hi {username}, your account has been created successfully! Kindly login below")
-            return redirect('login')
+            mydict = {'username': username}
+            #COPIED FROM THE OTHER REGISTER VIEW
+            mail_settings = MailSettings()
+            mail_settings.sandbox_mode = SandBoxMode(False)
+            html_template = 'blog/index.html'
+            html_message = render_to_string(html_template, context=mydict)
+            subject = 'Welcome!!!'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            # YOU CHANGED IT FROM EmailMessage to send_mail
+            message = EmailMessage(subject, html_message,
+                                   email_from, recipient_list)
+            message.content_subtype = 'html'
+            message.mail = mail_settings
+            new_mail = message.send()
+            # print(new_mail)
+            messages.success(request, f'Account created for {username}! You can sign in below')
+            return redirect("login")
     else:
         form = UserRegisterForm()
     return render(request, "users/main_register.html", {"form": form})
