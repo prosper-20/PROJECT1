@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/PROJECT1/Download/About Us/css.css">
+<link rel="stylesheet" type="text/css" href="{% static 'users/new_css.css' %}">
   
   <!-- Main Navigation -->
   <header>
@@ -28,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#team" data-offset="60">Team</a>
@@ -250,7 +251,7 @@
         <section id="gallery" class="section wow fadeIn" data-wow-delay="0.3s">
 
             <!-- Section heading -->
-            <h1 class="font-weight-bold text-center h1 my-5">Our work</h1>
+            <h1 class="font-weight-bold text-center h1 my-5">Our Top Articles</h1>
             <!-- Section description -->
             <p class="text-center grey-text mb-5 mx-auto w-responsive">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 
@@ -302,10 +303,10 @@
                 </div>
 
             </div> -->
-            <div class="row row-cols-1 row-cols-md-2 g-4 m-40">
+            <div class="row row-cols-1 row-cols-md-3 g-4 pb-5">
                 <div class="col">
                   <div class="card">
-                    <a href="https:12">
+                    <a href="https://www.google.com">
                     <img
                       src="https://mdbootstrap.com/img/new/standard/city/041.jpg"
                       class="card-img-top"
@@ -321,6 +322,42 @@
                     </div>
                   </div>
                 </div>
+                <div class="col">
+                    <div class="card">
+                      <a href="https://www.google.com">
+                      <img
+                        src="https://mdbootstrap.com/img/new/standard/city/041.jpg"
+                        class="card-img-top"
+                        alt="..."
+                      />
+                      </a>
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                          This is a longer card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <a href="https://www.google.com">
+                      <img
+                        src="https://mdbootstrap.com/img/new/standard/city/041.jpg"
+                        class="card-img-top"
+                        alt="..."
+                      />
+                      </a>
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                          This is a longer card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 <div class="col">
                   <div class="card">
                     <img
@@ -387,7 +424,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-8 col-xl-9">
-                    <form>
+                    <form action="{% url 'send_me-mail' %}" method="post">
 
                         <!-- Grid row -->
                         <div class="row">
@@ -439,11 +476,16 @@
                         </div>
                         <!-- Grid row -->
 
+                        <div class="text-center text-md-left mb-4">
+                            <button type="submit" class="btn btn-light-blue">Send</button>
+                        </div>
+
                     </form>
 
                     <div class="text-center text-md-left mb-4">
-                        <a class="btn btn-light-blue">Send</a>
+                        <button type="submit" class="btn btn-light-blue">Send</button>
                     </div>
+
                 </div>
                 <!-- Grid column -->
 
@@ -459,7 +501,7 @@
                         </li>
 
                         <li><i class="fas fa-envelope fa-2x"></i>
-                            <p>hisblog.com</p>
+                            <p>hisblog@gmail.com</p>
                         </li>
                     </ul>
                 </div>
@@ -527,7 +569,7 @@
 <!-- Footer -->
 
 <!-- JQuery -->
-<script type="text/javascript" src="/PROJECT1/Download/About Us/js.js"></script>
+<script type="text/javascript" src="{% static 'new_js.js' %}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

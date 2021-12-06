@@ -88,5 +88,22 @@ def profile(request):
     return render(request, "users/profile.html", context)
 
 
+def send_me_mail(request):
+    if request.method == "POST":
+        email = request.POST['email']
+        name = request.POST['name']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        email_from = email
+        recipient_list = ['edwardprosper001@gmail.com']
+        message = EmailMessage(subject, message, email_from, recipient_list)
+        message.send()
+        return redirect('login')
+    else:
+        return render(request, 'blog/new_about.html')
+
+
+
 
 
