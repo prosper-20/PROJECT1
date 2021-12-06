@@ -105,5 +105,8 @@ def send_me_mail(request):
 
 
 
+def new_about(request):
+    return render(request, 'users/main.html')
+
 
 
