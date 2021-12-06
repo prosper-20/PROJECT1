@@ -24,7 +24,7 @@ def register(request):
             #COPIED FROM THE OTHER REGISTER VIEW
             mail_settings = MailSettings()
             mail_settings.sandbox_mode = SandBoxMode(False)
-            html_template = 'blog/index.html'
+            html_template = 'blog/new_email.html'
             html_message = render_to_string(html_template, context=mydict)
             subject = 'Welcome!!!'
             email_from = settings.EMAIL_HOST_USER
