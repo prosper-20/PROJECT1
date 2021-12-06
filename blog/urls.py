@@ -18,6 +18,8 @@ from .views import (
     LifeView,
     EducationView,
 )
+from users import views as uv
+from users.views import send_me_mail, new_about
 
 urlpatterns = [
     path('', PostListView.as_view(), name='home'),
@@ -38,7 +40,7 @@ urlpatterns = [
     path("post/trending/", views.TrendingView, name="trending_view"),
     # path("post/music/", views.MusicView, name="music_view"),
     path("post/sports/", views.SportsView, name="sports_view"),
-
+    path('new_about/', uv.new_about, name="about")
 
     
 ]
