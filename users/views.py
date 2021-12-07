@@ -129,5 +129,8 @@ def new_about(request):
 def carousel(request):
     return render(request, 'blog/full-carousel-cover.html')
 
+def combined_view(request):
+    return render(request, 'users/main_1.html')
+
 
 

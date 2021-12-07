@@ -41,7 +41,8 @@ urlpatterns = [
     # path("post/music/", views.MusicView, name="music_view"),
     path("post/sports/", views.SportsView, name="sports_view"),
     path('new_about/', uv.new_about, name="about"),
-    path('carousel', uv.carousel, name="carousel")
+    path('carousel', uv.carousel, name="carousel"),
+    path('combined/', uv.combined_view, name='combined')
 
     
 ]
