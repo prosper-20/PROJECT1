@@ -126,4 +126,8 @@ def new_about(request):
     return render(request, 'users/main.html')
 
 
+def carousel(request):
+    return render(request, 'blog/full-carousel-cover.html')
+
+
 
