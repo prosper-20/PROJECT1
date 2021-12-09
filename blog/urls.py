@@ -19,7 +19,7 @@ from .views import (
     EducationView,
 )
 from users import views as uv
-from users.views import send_me_mail, new_about, carousel
+from users.views import send_me_mail, new_about
 
 urlpatterns = [
     path('', PostListView.as_view(), name='home'),
@@ -41,8 +41,6 @@ urlpatterns = [
     # path("post/music/", views.MusicView, name="music_view"),
     path("post/sports/", views.SportsView, name="sports_view"),
     path('new_about/', uv.new_about, name="about"),
-    path('carousel', uv.carousel, name="carousel"),
-    path('combined/', uv.combined_view, name='combined')
-
+    
     
 ]
